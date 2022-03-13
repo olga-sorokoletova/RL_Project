@@ -3,7 +3,7 @@ import numpy as np
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-
+from torch import device
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
@@ -112,22 +112,26 @@ class TD3(object):
 			noise = (
 				torch.randn_like(action) * self.policy_noise
 			).clamp(-self.noise_clip, self.noise_clip)
-			
+
 			next_action = (
-				self.actor_target(next_state) + noise
+					self.actor_target(next_state) + noise
 			).clamp(-self.max_action, self.max_action)
 
+
 			# Compute the target Q value
+
 			target_Q1, target_Q2 = self.critic_target(next_state, next_action)
-			target_Q = torch.min(target_Q1, target_Q2)
+			#target_Q = torch.min(target_Q1, target_Q2)
+			target_Q=target_Q1
+			#Calculating y
 			target_Q = reward + not_done * self.discount * target_Q
 
 		# Get current Q estimates
 		current_Q1, current_Q2 = self.critic(state, action)
-
+		current_Q=current_Q1
 		# Compute critic loss
-		critic_loss = F.mse_loss(current_Q1, target_Q) + F.mse_loss(current_Q2, target_Q)
-
+		#critic_loss = F.mse_loss(current_Q1, target_Q) + F.mse_loss(current_Q2, target_Q)
+		critic_loss = F.mse_loss(current_Q,target_Q)
 		# Optimize the critic
 		self.critic_optimizer.zero_grad()
 		critic_loss.backward()
