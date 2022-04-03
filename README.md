@@ -1,18 +1,11 @@
-# Machine Learning
+# Reinforcement Learning
 
-This is the repository with the solution of assignments proposed for the course of *Machine Learning*. 
+This is the repository with the homework assignment and the final project proposed for the course of *Reinforcement Learning*. 
 
-It contains two homeworks written in Python:
-1. **Homework 1:** Binary Functions Classification;
-2. **Homework 2:** RoboCup@Home Object Classification (8-class Image Classification).
-___
+1. **Homework:** Markov Decision Processes;
+2. **Project:** TD3 applied to the Reacher-v2 environment.
 
-### Each of the subfolders contains:
-* Comment on the *Task Assignment* (in README.md and corresponding report.pdf)
-* Description of the given *Dataset* (in README.md and corresponding report.pdf)
-* Description of the *Model and Approach* to solution (in README.md and corresponding report.pdf)
-* *Code* Implementation (corresponding code.ipynb)
-* Report of the *Result* (commented in README.md, plotted in corresponding report.pdf, printed in corresponding code.ipynb, attached as a file in case of Homework 1)
+Detailed description of each of them along with the code implementations can be found in the corresponding subfolders.
 
 ## Author
 - Olga Sorokoletova - 1937430
